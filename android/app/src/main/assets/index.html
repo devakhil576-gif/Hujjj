@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090912" />
+  <title>Alurev</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span>A</span><b>Alurev</b></div>
+      <button id="postBtn">＋</button>
+    </header>
+
+    <section class="stories" id="stories"></section>
+    <section class="screen" id="screen"></section>
+
+    <nav class="nav">
+      <button data-tab="home" class="active">Home</button>
+      <button data-tab="reels">Reels</button>
+      <button data-tab="match">Match</button>
+      <button data-tab="lens">Lens</button>
+      <button data-tab="chats">Chats</button>
+      <button data-tab="profile">Me</button>
+    </nav>
+  </main>
+
+  <dialog id="modal">
+    <div id="modalText"></div>
+    <button onclick="modal.close()">Close</button>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
