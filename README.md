@@ -15,7 +15,13 @@ It includes:
 
 ## Build APK
 
-Open the **Actions** tab in this GitHub repo, run **Build Alurev APK**, then download the artifact named **Alurev-debug-apk**.
+I uploaded the Android source and the APK build recipe.
+
+The file `build-apk.yml` is currently at the repo root. To enable automatic GitHub APK building, move/copy it to:
+
+`.github/workflows/build-apk.yml`
+
+Then open the **Actions** tab, run **Build Alurev APK**, and download the artifact named **Alurev-debug-apk**.
 
 Inside it you will find `app-debug.apk`.
 
@@ -23,7 +29,7 @@ Inside it you will find `app-debug.apk`.
 
 - `android/` — Android WebView app source
 - `android/app/src/main/assets/` — Alurev web app UI loaded inside the APK
-- `.github/workflows/build-apk.yml` — automatic APK builder
+- `build-apk.yml` — APK builder workflow content
 
 ## Safety note
 
