@@ -9,7 +9,6 @@
 <body>
   <header class="topbar">
     <div class="brand"><div class="brandmark">+</div><div><strong>HealthBot</strong><span>AI Health Consultation</span></div></div>
-    <button class="icon-btn" onclick="openSettings()" aria-label="Settings">⚙</button>
   </header>
 
   <main class="app-shell">
@@ -17,7 +16,7 @@
       <div class="eyebrow">CLINICAL • MODERN • GROUNDED</div>
       <h1>Ask about your health.</h1>
       <p>Get clear, evidence-aware health information in a private conversation. HealthBot is not a diagnosis or a substitute for a clinician.</p>
-      <div class="status-pill" id="keyStatus">● AI key not configured</div>
+      <div class="status-pill" id="keyStatus">● AI connected</div>
     </section>
 
     <section class="notice">
@@ -49,15 +48,7 @@
     </div>
   </main>
 
-  <div class="modal" id="settingsModal" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-head"><div><div class="eyebrow">SETUP</div><h2>AI connection</h2></div><button class="icon-btn" onclick="closeSettings()">×</button></div>
-      <p>HealthBot uses Google's Gemini API for responses and optional Google Search grounding. Enter a Gemini API key on this device; it is stored only in local app preferences.</p>
-      <input id="apiKey" type="password" placeholder="Gemini API key">
-      <div class="modal-actions"><button class="secondary" onclick="clearKey()">Clear</button><button class="primary" onclick="saveKey()">Save key</button></div>
-      <small>Do not paste a key belonging to someone else. API usage may incur charges depending on the key/account.</small>
-    </div>
-  </div>
+  <script src="https://js.puter.com/v2/"></script>
   <script src="app.js"></script>
 </body>
 </html>
