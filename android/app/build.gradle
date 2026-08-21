@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace 'com.alurev.app'
+    namespace 'com.healthbot.app'
     compileSdk 35
 
     defaultConfig {
-        applicationId 'com.alurev.app'
+        applicationId 'com.healthbot.app'
         minSdk 23
         targetSdk 35
-        versionCode 2
-        versionName '1.1.0-local-mvp'
+        versionCode 1
+        versionName '1.0.0'
     }
 }
