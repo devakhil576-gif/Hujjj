@@ -1,39 +1,63 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#090912" />
-  <title>Alurev</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="mvp.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>HealthBot</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="app">
-    <header class="topbar">
-      <div class="brand"><span>A</span><b>Alurev</b></div>
-      <button id="postBtn">＋</button>
-    </header>
+  <header class="topbar">
+    <div class="brand"><div class="brandmark">+</div><div><strong>HealthBot</strong><span>AI Health Consultation</span></div></div>
+    <button class="icon-btn" onclick="openSettings()" aria-label="Settings">⚙</button>
+  </header>
 
-    <section class="stories" id="stories"></section>
-    <section class="screen" id="screen"></section>
+  <main class="app-shell">
+    <section class="hero">
+      <div class="eyebrow">CLINICAL • MODERN • GROUNDED</div>
+      <h1>Ask about your health.</h1>
+      <p>Get clear, evidence-aware health information in a private conversation. HealthBot is not a diagnosis or a substitute for a clinician.</p>
+      <div class="status-pill" id="keyStatus">● AI key not configured</div>
+    </section>
 
-    <nav class="nav">
-      <button data-tab="home" class="active">Home</button>
-      <button data-tab="reels">Reels</button>
-      <button data-tab="match">Match</button>
-      <button data-tab="lens">Lens</button>
-      <button data-tab="chats">Chats</button>
-      <button data-tab="profile">Me</button>
-    </nav>
+    <section class="notice">
+      <strong>Important</strong>
+      <span>For severe, rapidly worsening, or emergency symptoms, seek immediate medical care. If you're under 18, involve a parent, guardian, or trusted adult when appropriate.</span>
+    </section>
+
+    <section id="chat" class="chat-card">
+      <div class="empty-state" id="emptyState">
+        <div class="bot-orb">✚</div>
+        <h2>Medical Assistant</h2>
+        <p>Describe what is happening, how long it has been happening, and anything relevant such as age range, symptoms, or a clinician's instructions.</p>
+        <div class="chips">
+          <button onclick="usePrompt('What could cause a mild headache, and what warning signs should I watch for?')">Headache</button>
+          <button onclick="usePrompt('What are common causes of acne, and what general care is evidence-based?')">Skin</button>
+          <button onclick="usePrompt('What information should I tell a doctor about a new symptom?')">Doctor visit</button>
+        </div>
+      </div>
+    </section>
+
+    <form class="composer" onsubmit="sendMessage(event)">
+      <textarea id="input" rows="1" placeholder="Describe your health question…" autocomplete="off"></textarea>
+      <button id="send" type="submit" aria-label="Send">↑</button>
+    </form>
+
+    <div class="utility-row">
+      <button onclick="clearChat()">New consultation</button>
+      <button onclick="saveSummary()">Save summary</button>
+    </div>
   </main>
 
-  <dialog id="modal">
-    <div id="modalText"></div>
-    <button onclick="modal.close()">Close</button>
-  </dialog>
-
-  <div id="toast" class="toast hidden"></div>
+  <div class="modal" id="settingsModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head"><div><div class="eyebrow">SETUP</div><h2>AI connection</h2></div><button class="icon-btn" onclick="closeSettings()">×</button></div>
+      <p>HealthBot uses Google's Gemini API for responses and optional Google Search grounding. Enter a Gemini API key on this device; it is stored only in local app preferences.</p>
+      <input id="apiKey" type="password" placeholder="Gemini API key">
+      <div class="modal-actions"><button class="secondary" onclick="clearKey()">Clear</button><button class="primary" onclick="saveKey()">Save key</button></div>
+      <small>Do not paste a key belonging to someone else. API usage may incur charges depending on the key/account.</small>
+    </div>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>
