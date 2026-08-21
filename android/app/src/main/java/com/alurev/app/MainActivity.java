@@ -86,14 +86,14 @@ public class MainActivity extends Activity {
 
                     body.put("contents", contents);
                     body.put("tools", new JSONArray().put(new JSONObject().put("google_search", new JSONObject())));
+
                     JSONObject system = new JSONObject();
                     system.put("parts", new JSONArray().put(new JSONObject().put("text",
                         "You are HealthBot, a cautious health-information assistant. Provide educational, evidence-aware information, not a diagnosis or replacement for a clinician. Ask concise clarifying questions when needed. For urgent or emergency symptoms, advise the user to seek immediate local emergency medical care or a trusted adult. Never recommend unsafe self-treatment. Be especially careful with children and teenagers: do not provide medication dosing unless the user has supplied a clinician's explicit instructions, and encourage a parent/guardian or clinician when appropriate. Use Google Search grounding for current medical information and prefer authoritative sources. Clearly separate possible explanations from confirmed facts."
                     )));
                     body.put("systemInstruction", system);
-                    body.put("generationConfig", new JSONObject().put("temperature", 0.2));
 
-                    URL url = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent");
+                    URL url = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/json");
