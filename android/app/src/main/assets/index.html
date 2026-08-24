@@ -3,52 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>HealthBot</title>
+  <title>MotionWeave</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand"><div class="brandmark">+</div><div><strong>HealthBot</strong><span>AI Health Consultation</span></div></div>
-  </header>
+  <main class="app">
+    <header>
+      <div>
+        <div class="eyebrow">ON-DEVICE VIDEO RESEARCH</div>
+        <h1>MotionWeave</h1>
+        <p class="sub">Motion-first generation without a giant denoising loop.</p>
+      </div>
+      <span class="badge">MVP 0.1</span>
+    </header>
 
-  <main class="app-shell">
-    <section class="hero">
-      <div class="eyebrow">CLINICAL • MODERN • GROUNDED</div>
-      <h1>Ask about your health.</h1>
-      <p>Get clear, evidence-aware health information in a private conversation. HealthBot is not a diagnosis or a substitute for a clinician.</p>
-      <div class="status-pill" id="keyStatus">● AI connected</div>
-    </section>
-
-    <section class="notice">
-      <strong>Important</strong>
-      <span>For severe, rapidly worsening, or emergency symptoms, seek immediate medical care. If you're under 18, involve a parent, guardian, or trusted adult when appropriate.</span>
-    </section>
-
-    <section id="chat" class="chat-card">
-      <div class="empty-state" id="emptyState">
-        <div class="bot-orb">✚</div>
-        <h2>Medical Assistant</h2>
-        <p>Describe what is happening, how long it has been happening, and anything relevant such as age range, symptoms, or a clinician's instructions.</p>
-        <div class="chips">
-          <button onclick="usePrompt('What could cause a mild headache, and what warning signs should I watch for?')">Headache</button>
-          <button onclick="usePrompt('What are common causes of acne, and what general care is evidence-based?')">Skin</button>
-          <button onclick="usePrompt('What information should I tell a doctor about a new symptom?')">Doctor visit</button>
-        </div>
+    <section class="card prompt-card">
+      <label for="prompt">Scene idea</label>
+      <textarea id="prompt" rows="3">A person walks forward, stops, looks behind them, then the camera slowly orbits left.</textarea>
+      <div class="row">
+        <button id="plan">Build motion graph</button>
+        <button id="render" class="secondary">Render preview</button>
       </div>
     </section>
 
-    <form class="composer" onsubmit="sendMessage(event)">
-      <textarea id="input" rows="1" placeholder="Describe your health question…" autocomplete="off"></textarea>
-      <button id="send" type="submit" aria-label="Send">↑</button>
-    </form>
+    <section class="grid">
+      <div class="card">
+        <div class="section-title">Motion graph</div>
+        <div id="graph" class="graph"></div>
+      </div>
+      <div class="card preview-card">
+        <div class="section-title">Temporal preview</div>
+        <canvas id="preview" width="640" height="360"></canvas>
+        <div class="timeline"><div id="playhead"></div></div>
+      </div>
+    </section>
 
-    <div class="utility-row">
-      <button onclick="clearChat()">New consultation</button>
-      <button onclick="saveSummary()">Save summary</button>
-    </div>
+    <section class="card">
+      <div class="section-title">Architecture</div>
+      <div class="pipeline">
+        <span>Prompt</span><b>→</b><span>Motion graph</span><b>→</b><span>Keyframes</span><b>→</b><span>Temporal renderer</span>
+      </div>
+      <p class="note">This prototype is intentionally model-free. The next research layer can replace individual deterministic components with compact learned modules, quantized runtimes, or device NPU operators.</p>
+    </section>
   </main>
-
-  <script src="https://js.puter.com/v2/"></script>
   <script src="app.js"></script>
 </body>
 </html>
