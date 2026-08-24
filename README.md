@@ -1,32 +1,41 @@
-# HealthBot
+# MotionWeave
 
-HealthBot is an Android AI health-information chat app based on the supplied HealthBot workflow specification.
+MotionWeave is an experimental, mobile-first AI video research project. It explores a different route from conventional large text-to-video diffusion: represent a scene as a compact motion graph, generate a small number of keyframes, and reconstruct temporal frames with lightweight learned or procedural components.
 
-## Included
+## Goal
 
-- Clinical-modern mobile UI using the supplied teal/blue palette direction
-- Multi-turn health conversation
-- Gemini API integration
-- Google Search grounding for current information
-- Local API-key storage in Android app preferences
-- Safety-focused medical system instructions
-- Conversation summary export as a text file
-- GitHub Actions debug APK build
+Build a video generator that can eventually run on Android-class hardware without requiring a frontier-sized model or a huge denoising loop.
 
-## Important
+## Current MVP
 
-HealthBot provides educational health information. It is not a diagnostic service or a replacement for a licensed clinician. For severe or emergency symptoms, seek immediate medical care.
+The Android app contains a local motion-graph editor and a lightweight canvas renderer. It does **not** claim to be a Seedance-class model yet. The MVP is deliberately model-free so the motion representation can be tested before expensive model work begins.
 
-The app does not ship with an API key. Open the Settings button in the app and enter a Gemini API key on the device. API usage is subject to the account's applicable limits and charges.
+Current pipeline:
 
-## Build
+`Prompt → Motion Graph → Keyframe Plan → Temporal Reconstruction → Preview`
 
-1. Open the repository's **Actions** tab.
-2. Select **Build HealthBot APK**.
-3. Choose **Run workflow**.
-4. Download the artifact named **HealthBot-debug-apk**.
-5. The artifact contains `app-debug.apk`.
+The first renderer supports camera motion, object translation, scale, rotation, opacity, easing, and keyframe interpolation. This provides a deterministic testbed for the future learned renderer.
 
-## Architecture
+## Research direction
 
-The Android shell uses a WebView for the mobile interface. Java exposes a small native bridge that stores the API key locally and sends conversation history to the Gemini `generateContent` endpoint with Google Search grounding enabled. The browser layer never contains a hard-coded API key.
+1. Scene representation: background, subjects, objects, camera and depth layers.
+2. Motion representation: compact time-dependent transforms instead of generating every frame from noise.
+3. Keyframe synthesis: generate sparse high-quality anchors.
+4. Temporal reconstruction: interpolate or predict intermediate frames.
+5. Consistency correction: detect temporal drift and repair only affected regions.
+6. Mobile runtime: quantized small networks, NNAPI/GPU/NPU execution where available, tiled memory and adaptive resolution.
+
+## What we are deliberately NOT doing first
+
+- Training a multi-billion-parameter video model from scratch.
+- Depending on an LLM for every generation step.
+- Requiring cloud inference for the core renderer.
+- Pretending that the current prototype is already a frontier video model.
+
+## Android build
+
+Open GitHub Actions → **Build MotionWeave APK** → **Run workflow** → download `MotionWeave-debug-apk`.
+
+## License and model data
+
+The repository code is experimental. Any future model weights or datasets must be added only when their licenses permit redistribution and use. Do not scrape or redistribute copyrighted video datasets without appropriate rights.
