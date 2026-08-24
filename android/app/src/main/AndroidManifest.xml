@@ -2,7 +2,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:theme="@style/AppTheme"
-        android:label="HealthBot"
+        android:label="MotionWeave"
         android:usesCleartextTraffic="false"
         android:resizeableActivity="true">
         <activity
