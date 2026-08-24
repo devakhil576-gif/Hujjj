@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace 'com.healthbot.app'
+    namespace 'com.motionweave.app'
     compileSdk 35
 
     defaultConfig {
-        applicationId 'com.healthbot.app'
+        applicationId 'com.motionweave.app'
         minSdk 23
         targetSdk 35
         versionCode 1
-        versionName '1.0.0'
+        versionName '0.1.0'
     }
 }
