@@ -1,4 +1,4 @@
-package com.healthbot.app;
+package com.motionweave.app;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -14,7 +14,7 @@ import java.io.InputStream;
 
 public class MainActivity extends Activity {
     private WebView webView;
-    private static final String APP_ORIGIN = "https://healthbot.local/";
+    private static final String APP_ORIGIN = "https://motionweave.local/";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -37,8 +37,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        // IMPORTANT: Puter.js rejects file:/// pages. The app assets are therefore
-        // exposed through an HTTPS origin so Puter.js sees a normal web protocol.
         webView.loadUrl(APP_ORIGIN + "index.html");
         setContentView(webView);
     }
