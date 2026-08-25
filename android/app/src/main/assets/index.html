@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>MotionWeave</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <div class="eyebrow">ON-DEVICE VIDEO RESEARCH</div>
+        <h1>MotionWeave</h1>
+        <p class="sub">Motion-first generation without a giant denoising loop.</p>
+      </div>
+      <span class="badge">MVP 0.1</span>
+    </header>
+
+    <section class="card prompt-card">
+      <label for="prompt">Scene idea</label>
+      <textarea id="prompt" rows="3">A person walks forward, stops, looks behind them, then the camera slowly orbits left.</textarea>
+      <div class="row">
+        <button id="plan">Build motion graph</button>
+        <button id="render" class="secondary">Render preview</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="section-title">Motion graph</div>
+        <div id="graph" class="graph"></div>
+      </div>
+      <div class="card preview-card">
+        <div class="section-title">Temporal preview</div>
+        <canvas id="preview" width="640" height="360"></canvas>
+        <div class="timeline"><div id="playhead"></div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">Architecture</div>
+      <div class="pipeline">
+        <span>Prompt</span><b>→</b><span>Motion graph</span><b>→</b><span>Keyframes</span><b>→</b><span>Temporal renderer</span>
+      </div>
+      <p class="note">This prototype is intentionally model-free. The next research layer can replace individual deterministic components with compact learned modules, quantized runtimes, or device NPU operators.</p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
