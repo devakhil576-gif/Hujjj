@@ -1,23 +1,29 @@
 # Pet Haven
 
-A mobile-first virtual pet web app replacing the original video-generator MVP.
+A mobile-first virtual pet web app. The previous MotionWeave/video-generator direction has been replaced by this playable browser pet.
 
 ## Features
 
-- Four persistent stats: hunger, happiness, energy, and affection.
+- Hunger, happiness, energy, and affection stats.
 - Animated pet with idle, happy, eating, and sleeping states.
-- Interactive room with window, plant, rug, and bedroom/sleep mode.
+- Interactive room with window, plant, rug, and sleep/bedroom mode.
 - Food: apple, meal, and treat.
 - Toys: teddy, yo-yo, and ball.
 - Affection/cuddle interaction.
-- Pet chat interface with simple contextual replies.
-- Local persistence through `localStorage`.
-- Offline time simulation so the pet state changes while the app is closed.
-- Responsive layout designed for phones and tablets.
-- No backend, API key, database, or video-generation service required.
+- Pet chat with contextual replies.
+- Persistent state using browser `localStorage`.
+- Offline time simulation when the app is closed.
+- Responsive phone/tablet layout.
+- No backend, API key, database, or video generator required.
 
-## Run
+## Run locally
 
-Open `index.html` in a browser. For GitHub Pages, publish the repository's `main` branch and use the root as the source.
+Open `index.html` in a modern browser.
 
-All game state stays in the user's browser on that device.
+## GitHub Pages
+
+The repository now includes `.github/workflows/pages.yml`. Every push to `main` deploys the site to GitHub Pages. After the first workflow completes, the site will be available at:
+
+`https://devakhil576-gif.github.io/Hujjj/`
+
+The pet's state is stored locally in the browser on each device; GitHub does not store the pet's game state.
